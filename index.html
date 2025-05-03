@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Teklif Testi</title>
+</head>
+<body>
+  <button onclick="gonder()">Test Gönder</button>
+  <script>
+    function gonder() {
+      fetch("https://script.google.com/macros/s/AKfycbxSP00EZyKGZqHgf1yQ6GNgZZ6NvRqoA8TbNUsT9nMXQRGAKOC15pzL3Oen-TjesMiSeg/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "Ayşe Yılmaz",
+          phone: "05320000000",
+          email: "ayse@mail.com",
+          personel: "Gülşah",
+          note: "Açık ton tercih edildi.",
+          items: [
+            { title: "Dip Boya - Kısa", count: 1, price: 1400 },
+            { title: "Limited Plus 60cm", count: 80, price: 167 }
+          ]
+        })
+      })
+      .then(res => res.text())
+      .then(res => alert("SONUÇ: " + res))
+      .catch(err => alert("Hata: " + err));
+    }
+  </script>
+</body>
+</html>
